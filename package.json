@@ -1,0 +1,22 @@
+{
+  "name": "clientkit-helpers",
+  "version": "1.0.0",
+  "description": "Helpers for clientkit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firstandthird/clientkit-helpers.git"
+  },
+  "author": "First+Third",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/firstandthird/clientkit-helpers/issues"
+  },
+  "homepage": "https://github.com/firstandthird/clientkit-helpers#readme",
+  "dependencies": {
+    "require-all": "^2.0.0"
+  }
+}
