@@ -2,11 +2,11 @@
 
 const fs = require('fs');
 
-module.exports = (server, asset, done) => {
+module.exports = function(server, asset, done) {
   const settings = this.options.assets || {};
   const dist = settings.dist || '';
   const mappingFile = settings.mappingFile;
-  const endpoint = settings.endpoint;
+  const endpoint = settings.endpoint || '';
 
   const defaultFile = () => done(null, `${endpoint}/${dist}${asset}`);
 

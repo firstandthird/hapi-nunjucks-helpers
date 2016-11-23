@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (server, asset, done) => {
+module.exports = function(server, asset, done) {
   const settings = this.options.assets || {};
 
   const cdn = settings.cdn || '';
