@@ -3,11 +3,12 @@
 const fs = require('fs');
 
 module.exports = (server, asset, done) => {
-  const settings = server.settings.app;
-  const dist = settings.assets.dist || '';
-  const mappingFile = settings.assets.mapping;
+  const settings = this.options.assets || {};
+  const dist = settings.dist || '';
+  const mappingFile = settings.mappingFile;
+  const endpoint = settings.endpoint;
 
-  const defaultFile = () => done(null, `${settings.assets.endpoint}/${dist}${asset}`);
+  const defaultFile = () => done(null, `${endpoint}/${dist}${asset}`);
 
   if (!mappingFile) {
     return defaultFile();
@@ -25,7 +26,7 @@ module.exports = (server, asset, done) => {
         return defaultFile();
       }
 
-      return done(null, `${settings.assets.endpoint}/${dist}${data[asset]}`);
+      return done(null, `${endpoint}/${dist}${data[asset]}`);
     });
   });
 };

@@ -13,7 +13,8 @@ exports.register = (server, options, next) => {
         viewManager.registerHelper(prop, (cb) => {
           cb.bind({
             server: serv,
-            helper: helpers[prop]
+            helper: helpers[prop],
+            options
           })();
         });
       });
