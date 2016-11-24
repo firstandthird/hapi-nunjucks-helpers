@@ -1,7 +1,7 @@
 {
-  "name": "clientkit-helpers",
+  "name": "hapi-nunjucks-helpers",
   "version": "1.0.0",
-  "description": "Helpers for clientkit",
+  "description": "Helpers for hapi-nunjucks",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
