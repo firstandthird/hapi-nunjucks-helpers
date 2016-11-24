@@ -6,6 +6,8 @@ exports.register = (server, options, next) => {
         return done(new Error('Vision not loaded'));
       }
 
+      serv.root.realm.plugins['hapi-nunjucks-helpers'] = {};
+
       const viewManager = serv.root.realm.plugins.vision.manager;
       const helpers = require('require-all')(`${__dirname}/helpers`);
 
