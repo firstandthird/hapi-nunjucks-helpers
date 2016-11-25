@@ -9,7 +9,7 @@ module.exports = function(server, asset, done) {
   const endpoint = settings.endpoint || '';
   const realm = server.realm.plugins['hapi-nunjucks-helpers'];
 
-  if (process.env.NODE_ENV === 'prod') {
+  if (!settings.cache) {
     realm.assetMap = false;
   }
 
