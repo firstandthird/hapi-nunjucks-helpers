@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = (server, asset, done) => {
-  const settings = server.settings.app;
+module.exports = function(server, asset, done) {
+  const settings = this.options.assets || {};
 
-  const cdn = settings.assets.cdn || '';
+  const cdn = settings.cdn || '';
 
   return done(null, `${cdn}${asset}`);
 };
