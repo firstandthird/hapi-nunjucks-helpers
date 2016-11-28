@@ -1,5 +1,18 @@
-# clientkit-helpers
-Helpers for clientkit
+# hapi-nunjucks-helpers
+Helpers for hapi-nunjucks
+
+### Usage
+
+Use as you would a normal hapijs plugin.
+
+### Options
+
+ - `assets`
+    - `dist` - Directories files are built to. Default: none.
+    - `mappingFile` - File output by clientkit to map hashed assets.
+    - `endpoint` - Base directory for assets. Default: none.
+    - `cdn` - Optional domain for assets. Default: none.
+    - `cache` - If `true`, caches contents of `mappingFile`. Default: `false`
 
 ### Filters:
 
