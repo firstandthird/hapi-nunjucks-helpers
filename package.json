@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/firstandthird/clientkit-helpers#readme",
   "dependencies": {
+    "clientkit-assets": "^1.0.1",
     "require-all": "^2.0.0"
   },
   "devDependencies": {
