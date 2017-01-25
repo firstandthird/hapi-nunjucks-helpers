@@ -20,7 +20,7 @@
     "require-all": "^2.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.9.1",
+    "eslint": "^3.14.1",
     "eslint-config-firstandthird": "^3.0.2",
     "eslint-plugin-import": "^2.1.0"
   }
