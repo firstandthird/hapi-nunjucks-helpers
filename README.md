@@ -37,3 +37,12 @@ With css/js
 ```html
 <script src="{{ 'common.js' | asset | cdn }}"></script>
 ```
+
+**date**
+
+Formats a date-string with momentjs
+
+```html
+From Now: {{ new Date | date }}
+Format String: {{ new Date | date("YYYY MM DD") }}
+```
