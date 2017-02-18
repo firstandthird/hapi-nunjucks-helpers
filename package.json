@@ -1,6 +1,6 @@
 {
   "name": "hapi-nunjucks-helpers",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Helpers for hapi-nunjucks",
   "main": "index.js",
   "scripts": {
@@ -17,11 +17,12 @@
   },
   "homepage": "https://github.com/firstandthird/clientkit-helpers#readme",
   "dependencies": {
+    "moment": "^2.17.1",
     "require-all": "^2.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.9.1",
-    "eslint-config-firstandthird": "^3.0.2",
-    "eslint-plugin-import": "^2.1.0"
+    "eslint": "3.11.1",
+    "eslint-config-firstandthird": "3.2.0",
+    "eslint-plugin-import": "2.2.0"
   }
 }
