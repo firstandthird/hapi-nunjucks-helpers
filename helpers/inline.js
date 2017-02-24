@@ -4,14 +4,16 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function(server, asset, done) {
+  const settings = this.options.inline || {};
+  const realm = server.realm.plugins['hapi-nunjucks-helpers'];
   const file = path.join(process.cwd(), asset);
-  const type = path.extname(file);
-  let wrapperStart = '<script>';
-  let wrapperEnd = '<script>';
 
-  if (type === 'css') {
-    wrapperStart = '<style>';
-    wrapperEnd = '</style>';
+  if (!settings.cache) {
+    realm.inline = {};
+  }
+
+  if (realm.inline[file]) {
+    return done(null, realm.inline[file]);
   }
 
   fs.access(file, fs.constants.R_OK, err => {
@@ -26,7 +28,9 @@ module.exports = function(server, asset, done) {
         return done();
       }
 
-      return done(null, `${wrapperStart}${data}${wrapperEnd}`);
+      realm.inline[file] = data;
+
+      return done(null, data);
     });
   });
 };
