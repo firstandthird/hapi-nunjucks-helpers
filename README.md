@@ -46,3 +46,11 @@ Formats a date-string with momentjs
 From Now: {{ new Date | date }}
 Format String: {{ new Date | date("YYYY MM DD") }}
 ```
+
+**inline**
+
+Takes a file and spits out the contents.
+
+```html
+<script>{{ 'common.js' | inline }}</script>
+```
