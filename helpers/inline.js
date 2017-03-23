@@ -3,7 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = function(server, asset, done) {
+module.exports = function(asset, done) {
+  const server = this.server;
   const settings = this.options.inline || {};
   const realm = server.realm.plugins['hapi-nunjucks-helpers'];
   const file = path.join(process.cwd(), asset);

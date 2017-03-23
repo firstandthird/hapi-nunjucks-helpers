@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(server, copy, cls, done) {
+module.exports = function(copy, cls, done) {
   if (typeof copy === 'string') {
     copy = [copy];
   }

@@ -2,7 +2,7 @@
 
 const moment = require('moment');
 
-module.exports = function(server, timestamp, format, done) {
+module.exports = function(timestamp, format, done) {
   const parsed = moment(timestamp);
   let output = '';
 

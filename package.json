@@ -4,14 +4,15 @@
   "description": "Helpers for hapi-nunjucks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint && tap --cov test/index.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/firstandthird/clientkit-helpers.git"
   },
   "author": "First+Third",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/firstandthird/clientkit-helpers/issues"
   },
@@ -23,6 +24,10 @@
   "devDependencies": {
     "eslint": "3.11.1",
     "eslint-config-firstandthird": "3.2.0",
-    "eslint-plugin-import": "2.2.0"
+    "eslint-plugin-import": "2.2.0",
+    "hapi": "16.1.0",
+    "tap": "10.3.0",
+    "vision": "4.1.1",
+    "vision-nunjucks": "2.0.0"
   }
 }
