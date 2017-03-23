@@ -6,7 +6,7 @@ const path = require('path');
 module.exports = function(asset, done) {
   const server = this.server;
   const settings = this.options.inline || {};
-  const realm = server.realm.plugins['hapi-nunjucks-helpers'];
+  const realm = this.cache;
   const file = path.join(process.cwd(), asset);
 
   if (!settings.cache) {

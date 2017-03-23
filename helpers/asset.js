@@ -8,8 +8,7 @@ module.exports = function(asset, done) {
   const dist = settings.dist || '';
   const mappingFile = settings.mappingFile;
   const endpoint = settings.endpoint || '';
-  const realm = server.realm.plugins['hapi-nunjucks-helpers'];
-
+  const realm = this.cache;
   if (!settings.cache) {
     realm.assetMap = false;
   }
