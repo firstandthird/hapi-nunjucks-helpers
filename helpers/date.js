@@ -3,7 +3,7 @@
 const moment = require('moment');
 
 module.exports = function(timestamp, format, done) {
-  const parsed = moment(timestamp);
+  const parsed = moment(timestamp || undefined);
   let output = '';
 
   if (typeof format === 'function') {
