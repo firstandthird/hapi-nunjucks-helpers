@@ -10,11 +10,12 @@ module.exports = function(items, exlist, key, done) {
 
   const filteredList = [];
   items.forEach((item) => {
-    if (item[key] && exclusions.indexOf(item[key]) !== -1) {
+    if (item[key] && exclusions.includes(item[key])) {
       return;
     }
 
     filteredList.push(item);
   });
+
   done(null, filteredList);
 };
