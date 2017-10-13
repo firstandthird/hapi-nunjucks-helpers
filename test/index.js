@@ -52,3 +52,46 @@ tap.test('slugify', (test) => {
     });
   });
 });
+
+tap.test('securify', (test) => {
+  server.register({
+    register: require('../'),
+    options: {
+      secureLinks: true
+    }
+  }, (err) => {
+    test.equal(err, null);
+    server.start((serverErr) => {
+      test.equal(serverErr, null);
+      server.inject({
+        url: '/securify'
+      }, (res) => {
+        test.equal(res.statusCode, 200);
+        const expected = fs.readFileSync(`${__dirname}/expected/securify.html`, 'utf8');
+        test.equal(res.payload, expected);
+        test.end();
+      });
+    });
+  });
+});
+
+tap.test('securify disabled', (test) => {
+  server.register({
+    register: require('../'),
+    options: {
+    }
+  }, (err) => {
+    test.equal(err, null);
+    server.start((serverErr) => {
+      test.equal(serverErr, null);
+      server.inject({
+        url: '/securify-disabled'
+      }, (res) => {
+        test.equal(res.statusCode, 200);
+        const expected = fs.readFileSync(`${__dirname}/expected/securify-disabled.html`, 'utf8');
+        test.equal(res.payload, expected);
+        test.end();
+      });
+    });
+  });
+});
