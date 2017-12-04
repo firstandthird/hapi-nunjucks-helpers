@@ -13,7 +13,7 @@ module.exports = function(timestamp, format, inputFormat, done) {
     inputFormat = null;
   }
 
-  if (inputFormat === 'function') {
+  if (typeof inputFormat === 'function') {
     done = inputFormat;
     inputFormat = null;
   }
