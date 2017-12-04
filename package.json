@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/firstandthird/clientkit-helpers.git"
+    "url": "git+https://github.com/firstandthird/hapi-nunjucks-helpers.git"
   },
   "author": "First+Third",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/firstandthird/clientkit-helpers/issues"
+    "url": "https://github.com/firstandthird/hapi-nunjucks-helpers/issues"
   },
-  "homepage": "https://github.com/firstandthird/clientkit-helpers#readme",
+  "homepage": "https://github.com/firstandthird/hapi-nunjucks-helpers#readme",
   "dependencies": {
     "moment": "^2.17.1",
     "require-all": "^2.0.0"
