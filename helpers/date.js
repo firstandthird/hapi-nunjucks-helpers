@@ -21,7 +21,7 @@ module.exports = function(timestamp, format, inputFormat, done) {
   if (inputFormat) {
     parsed = moment(input, inputFormat);
   } else {
-    parsed = moment(new Date(input));
+    parsed = input ? moment(new Date(input)) : moment();
   }
 
   if (format) {
