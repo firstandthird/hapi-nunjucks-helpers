@@ -36,65 +36,30 @@ function end(test) {
   server.stop({ timeout: 250 }, test.end);
 }
 
-tap.test('slugify', (test) => {
-  server.register({
-    register: require('../'),
-    options: {
-    }
-  }, (err) => {
-    test.error(err);
-    server.start((serverErr) => {
-      test.error(serverErr);
-      server.inject({
-        url: '/slugify'
-      }, (res) => {
-        test.equal(res.statusCode, 200);
-        const expected = fs.readFileSync(`${__dirname}/expected/slugify.html`, 'utf8');
-        test.equal(res.payload, expected);
-        end(test);
-      });
-    });
-  });
-});
+const tests = [
+  { path: 'date', options: {} },
+  { path: 'slugify', options: {} },
+  { path: 'securify', options: { secureLinks: true } },
+  { path: 'securify-disabled', options: {} }
+];
 
-tap.test('securify', (test) => {
-  server.register({
-    register: require('../'),
-    options: {
-      secureLinks: true
-    }
-  }, (err) => {
-    test.error(err);
-    server.start((serverErr) => {
-      test.error(serverErr);
-      server.inject({
-        url: '/securify'
-      }, (res) => {
-        test.equal(res.statusCode, 200);
-        const expected = fs.readFileSync(`${__dirname}/expected/securify.html`, 'utf8');
-        test.equal(res.payload, expected);
-        end(test);
-      });
-    });
-  });
-});
-
-tap.test('securify disabled', (test) => {
-  server.register({
-    register: require('../'),
-    options: {
-    }
-  }, (err) => {
-    test.error(err);
-    server.start((serverErr) => {
-      test.error(serverErr);
-      server.inject({
-        url: '/securify-disabled'
-      }, (res) => {
-        test.equal(res.statusCode, 200);
-        const expected = fs.readFileSync(`${__dirname}/expected/securify-disabled.html`, 'utf8');
-        test.equal(res.payload, expected);
-        end(test);
+tests.forEach(testCase => {
+  tap.test(testCase, test => {
+    server.register({
+      register: require('../'),
+      options: testCase.options
+    }, (err) => {
+      test.error(err);
+      server.start((serverErr) => {
+        test.error(serverErr);
+        server.inject({
+          url: `/${testCase.path}`
+        }, (res) => {
+          test.equal(res.statusCode, 200);
+          const expected = fs.readFileSync(`${__dirname}/expected/${testCase.path}.html`, 'utf8');
+          test.equal(res.payload, expected);
+          end(test);
+        });
       });
     });
   });
