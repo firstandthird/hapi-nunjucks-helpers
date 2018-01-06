@@ -1,31 +1,30 @@
-exports.register = (server, options, next) => {
+const register = function(server, options) {
   const cache = {};
+
   server.ext({
     type: 'onPostStart',
-    method(serv, done) {
-      if (!serv.root.realm.plugins.vision) {
-        return done(new Error('Vision not loaded'));
+    method(serv) {
+      if (!serv.realm.parent.plugins.vision) {
+        throw new Error('Vision not loaded');
       }
 
-      const viewManager = serv.root.realm.plugins.vision.manager;
+      const viewManager = serv.realm.parent.plugins.vision.manager;
       const helpers = require('require-all')(`${__dirname}/helpers`);
 
       Object.keys(helpers).forEach(prop => {
         const fn = helpers[prop].bind({
           server: serv,
-          options,
+          options: Object.assign({}, options),
           cache
         });
         viewManager.registerHelper(prop, fn);
       });
-
-      done();
     }
   });
-
-  next();
 };
 
-exports.register.attributes = {
-  pkg: require('./package.json')
+exports.plugin = {
+  once: true,
+  pkg: require('./package.json'),
+  register
 };

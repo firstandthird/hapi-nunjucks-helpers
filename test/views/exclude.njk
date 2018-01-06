@@ -1,0 +1,1 @@
+{% set filtered = items | exclude(exclude, 'slug') %}{% for filter in filtered %}{{ filter.name }}{% endfor %}
