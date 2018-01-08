@@ -4,6 +4,7 @@ const lab = exports.lab = Lab.script();
 const code = require('code');
 const hapi = require('hapi');
 const hapiNunjucksHelpers = require('../index.js');
+const visionNunjucksPlugin = require('vision-nunjucks');
 
 let server;
 
@@ -51,6 +52,7 @@ lab.experiment('helpers', () => {
   });
 
   lab.test('cdn', async() => {
+    visionNunjucksPlugin.clearEnvironment();
     await server.register(require('vision'));
 
     server.views({
@@ -254,6 +256,7 @@ lab.experiment('helpers', () => {
   });
 
   lab.test('securify', async() => {
+    visionNunjucksPlugin.clearEnvironment();
     await server.register(require('vision'));
 
     server.views({
@@ -293,6 +296,7 @@ lab.experiment('helpers', () => {
   });
 
   lab.test('securify disabled', async() => {
+    visionNunjucksPlugin.clearEnvironment();
     await server.register(require('vision'));
 
     server.views({
