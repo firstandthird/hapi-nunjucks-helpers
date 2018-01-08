@@ -15,7 +15,7 @@ lab.afterEach(async () => {
   await server.stop();
 });
 
-lab.experiment('helpers', async () => {
+lab.experiment('helpers', () => {
   lab.test('asset', async() => {
     await server.register(require('vision'));
 
@@ -24,6 +24,7 @@ lab.experiment('helpers', async () => {
         njk: require('vision-nunjucks')
       },
       path: `${__dirname}/views`,
+      isCached: false,
       compileMode: 'async'
     });
 
@@ -57,6 +58,7 @@ lab.experiment('helpers', async () => {
         njk: require('vision-nunjucks')
       },
       path: `${__dirname}/views`,
+      isCached: false,
       compileMode: 'async'
     });
 
@@ -71,7 +73,9 @@ lab.experiment('helpers', async () => {
     await server.register({
       plugin: hapiNunjucksHelpers,
       options: {
-        cdn: 'http://localhost'
+        assets: {
+          cdn: 'http://localhost'
+        }
       }
     });
 
@@ -95,6 +99,7 @@ lab.experiment('helpers', async () => {
         njk: require('vision-nunjucks')
       },
       path: `${__dirname}/views`,
+      isCached: false,
       compileMode: 'async'
     });
 
@@ -133,6 +138,7 @@ lab.experiment('helpers', async () => {
         njk: require('vision-nunjucks')
       },
       path: `${__dirname}/views`,
+      isCached: false,
       compileMode: 'async'
     });
 
@@ -166,6 +172,7 @@ lab.experiment('helpers', async () => {
         njk: require('vision-nunjucks')
       },
       path: `${__dirname}/views`,
+      isCached: false,
       compileMode: 'async'
     });
 
@@ -220,6 +227,7 @@ lab.experiment('helpers', async () => {
         njk: require('vision-nunjucks')
       },
       path: `${__dirname}/views`,
+      isCached: false,
       compileMode: 'async'
     });
 
@@ -245,7 +253,7 @@ lab.experiment('helpers', async () => {
     code.expect(res.payload.trim()).to.equal(expected.trim());
   });
 
-  await lab.test('securify', async() => {
+  lab.test('securify', async() => {
     await server.register(require('vision'));
 
     server.views({
@@ -253,6 +261,7 @@ lab.experiment('helpers', async () => {
         njk: require('vision-nunjucks')
       },
       path: `${__dirname}/views`,
+      isCached: false,
       compileMode: 'async'
     });
 
@@ -283,7 +292,7 @@ lab.experiment('helpers', async () => {
     code.expect(res.payload).to.equal(expected);
   });
 
-  await lab.test('securify disabled', async() => {
+  lab.test('securify disabled', async() => {
     await server.register(require('vision'));
 
     server.views({
@@ -291,6 +300,7 @@ lab.experiment('helpers', async () => {
         njk: require('vision-nunjucks')
       },
       path: `${__dirname}/views`,
+      isCached: false,
       compileMode: 'async'
     });
 
@@ -321,7 +331,7 @@ lab.experiment('helpers', async () => {
     code.expect(res.payload).to.equal(expected);
   });
 
-  await lab.test('slugify', async() => {
+  lab.test('slugify', async() => {
     await server.register(require('vision'));
 
     server.views({
@@ -329,6 +339,7 @@ lab.experiment('helpers', async () => {
         njk: require('vision-nunjucks')
       },
       path: `${__dirname}/views`,
+      isCached: false,
       compileMode: 'async'
     });
 
