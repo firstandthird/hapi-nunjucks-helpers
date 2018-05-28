@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-module.exports = function(asset, done) {
+module.exports = function(asset, version, done) {
   const server = this.server;
   const settings = this.options.assets || {};
   const dist = settings.dist || '';
@@ -13,7 +13,14 @@ module.exports = function(asset, done) {
     realm.assetMap = false;
   }
 
-  const defaultFile = () => done(null, `${endpoint}/${dist}${asset}`);
+  if (typeof version === 'function') {
+    done = version;
+    version = '';
+  } else {
+    version = `?v=${version}`;
+  }
+
+  const defaultFile = () => done(null, `${endpoint}/${dist}${asset}${version}`);
   const mappedFile = () => {
     const data = realm.assetMap;
 
@@ -21,7 +28,7 @@ module.exports = function(asset, done) {
       return defaultFile();
     }
 
-    return done(null, `${endpoint}/${dist}${data[asset]}`);
+    return done(null, `${endpoint}/${dist}${data[asset]}${version}`);
   };
 
   if (!mappingFile) {
