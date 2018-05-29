@@ -24,6 +24,13 @@ Reads from clientkit generated mapping file if available.
 <script src="{{ 'common.js' | asset }}"></script>
 ```
 
+Also possible to pass a version to force new fetch from cache:
+
+```html
+<script src="{{ 'common.js' | asset(2) }}"></script>
+<!-- /common.js?v=2 ?>
+```
+
 **cdn**
 
 Prefixes asset with cdn path from `assets.cdn` property.
