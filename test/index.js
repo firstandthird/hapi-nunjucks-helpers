@@ -9,6 +9,7 @@ const visionNunjucksPlugin = require('vision-nunjucks');
 let server;
 
 lab.beforeEach(() => {
+  visionNunjucksPlugin.clearEnvironment();
   server = new hapi.Server({ port: 8000 });
 });
 
@@ -369,6 +370,88 @@ lab.experiment('helpers', () => {
     });
 
     const expected = fs.readFileSync(`${__dirname}/expected/slugify.html`, 'utf8');
+
+    code.expect(res.statusCode).to.equal(200);
+    code.expect(res.payload).to.equal(expected);
+  });
+
+  lab.test('script', async() => {
+    await server.register(require('vision'));
+
+    server.views({
+      engines: {
+        njk: require('vision-nunjucks')
+      },
+      path: `${__dirname}/views`,
+      isCached: false,
+      compileMode: 'async'
+    });
+
+    server.route({
+      path: '/script',
+      method: 'get',
+      handler(request, h) {
+        return h.view('script');
+      }
+    });
+
+    await server.register({
+      plugin: hapiNunjucksHelpers,
+      options: {
+        assets: {
+          cdn: 'http://localhost'
+        }
+      }
+    });
+
+    await server.start();
+
+    const res = await server.inject({
+      url: '/script'
+    });
+
+    const expected = fs.readFileSync(`${__dirname}/expected/script.html`, 'utf8');
+
+    code.expect(res.statusCode).to.equal(200);
+    code.expect(res.payload).to.equal(expected);
+  });
+
+  lab.test('style', async() => {
+    await server.register(require('vision'));
+
+    server.views({
+      engines: {
+        njk: require('vision-nunjucks')
+      },
+      path: `${__dirname}/views`,
+      isCached: false,
+      compileMode: 'async'
+    });
+
+    server.route({
+      path: '/style',
+      method: 'get',
+      handler(request, h) {
+        return h.view('style');
+      }
+    });
+
+    await server.register({
+      plugin: hapiNunjucksHelpers,
+      options: {
+        assets: {
+          cdn: 'http://localhost'
+        }
+      }
+    });
+
+    await server.start();
+
+    const res = await server.inject({
+      url: '/style'
+    });
+
+    const expected = fs.readFileSync(`${__dirname}/expected/style.html`, 'utf8');
 
     code.expect(res.statusCode).to.equal(200);
     code.expect(res.payload).to.equal(expected);
