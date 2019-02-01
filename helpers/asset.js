@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-module.exports = function(asset, version, done) {
+module.exports = function(asset, version, done = (unused, val) => val) {
   const server = this.server;
   const settings = this.options.assets || {};
   const dist = settings.dist || '';
@@ -16,7 +16,7 @@ module.exports = function(asset, version, done) {
   if (typeof version === 'function') {
     done = version;
     version = '';
-  } else {
+  } else if (version !== '') {
     version = `?v=${version}`;
   }
 
