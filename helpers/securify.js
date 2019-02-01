@@ -5,6 +5,11 @@ module.exports = function(url, done) {
     return done(null, url);
   }
 
+  // make sure url is set
+  if (!url) {
+    return done(null, '');
+  }
+
   const output = url.replace(/^http:/, 'https:');
 
   done(null, output);

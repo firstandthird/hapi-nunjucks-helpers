@@ -18,16 +18,20 @@ module.exports = function(timestamp, format, inputFormat, done) {
     inputFormat = null;
   }
 
-  if (inputFormat) {
-    parsed = moment(input, inputFormat);
-  } else {
-    parsed = input ? moment(new Date(input)) : moment();
-  }
+  try {
+    if (inputFormat) {
+      parsed = moment(input, inputFormat);
+    } else {
+      parsed = input ? moment(new Date(input)) : moment();
+    }
 
-  if (format) {
-    output = parsed.format(format);
-  } else {
-    output = parsed.fromNow();
+    if (format) {
+      output = parsed.format(format);
+    } else {
+      output = parsed.fromNow();
+    }
+  } catch (e) {
+    console.error(['nunjucks', 'date-helper', 'error'], { message: 'Problem parsing date input', input }); // eslint-disable-line no-console
   }
 
   done(null, output);
