@@ -2,7 +2,7 @@ const fs = require('fs');
 const Lab = require('lab');
 const lab = exports.lab = Lab.script();
 const code = require('code');
-const hapi = require('hapi');
+const hapi = require('@hapi/hapi');
 const hapiNunjucksHelpers = require('../index.js');
 const visionNunjucksPlugin = require('vision-nunjucks');
 
