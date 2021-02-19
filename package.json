@@ -1,6 +1,6 @@
 {
   "name": "hapi-nunjucks-helpers",
-  "version": "4.3.2",
+  "version": "4.3.3",
   "description": "Helpers for hapi-nunjucks",
   "main": "index.js",
   "scripts": {
