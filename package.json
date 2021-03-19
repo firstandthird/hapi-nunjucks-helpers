@@ -37,12 +37,12 @@
   "devDependencies": {
     "code": "^5.1.2",
     "coveralls": "^3.0.0",
-    "eslint": "^4.14.0",
+    "eslint": "^5.16.0",
     "eslint-config-firstandthird": "^4.3.0",
     "eslint-plugin-import": "^2.8.0",
-    "hapi": "^17.2.0",
-    "lab": "^15.1.2",
+    "@hapi/hapi": "^18.0.0",
+    "lab": "^18.0.2",
     "vision": "^5.3.0",
-    "vision-nunjucks": "3.0.0"
+    "vision-nunjucks": "^3.2.0"
   }
 }
